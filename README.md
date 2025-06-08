@@ -1,2 +1,2 @@
 # PC-Upgrade-Store
-CRUT Operation v2 
+CRUD Operation v2 
