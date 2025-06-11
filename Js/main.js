@@ -59,6 +59,16 @@ btnupdate.onclick = ()=>{
     }
 }
 
+//delete records
+btndelete.onclick = () =>{
+    db.delete();
+    db = productdb("Productdb",{
+        products: `++id,name,seller,price`
+    });
+    db.open();
+    table();
+}
+
 function table(){
     const tbody = document.getElementById("tbody");
 
