@@ -64,6 +64,8 @@ function table(){
                 createEle("td",tr,td=>{
                     createEle("i",td,i =>{
                         i.className += "fas fa-edit btnedit"
+                        i.setAttribute(`data-id`,data.id);
+                        i.onclick = editbtn;
                     })
                 })
                 createEle("td",tr,td=>{
@@ -78,3 +80,9 @@ function table(){
 }
 
 
+function editbtn(event){
+    console.log(event.target.dataset.id);
+    db.products.get(1, data =>{
+        
+    })
+}
