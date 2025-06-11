@@ -44,6 +44,21 @@ btncreate.onclick = (event) => {
 // create event on btn read button
 btnread.onclick = table;
 
+// update event
+btnupdate.onclick = ()=>{
+    const id = parseInt(userid.value || 0);
+    if(id){
+        db.products.update(id,{
+            name: proname.value,
+            seller: seller.value,
+            price: price.value
+        }).then((updated)=>{
+            let get = updated ? `data Updated`:`Couldn't Update Data`;
+            console.log(get);
+        })
+    }
+}
+
 function table(){
     const tbody = document.getElementById("tbody");
 
@@ -81,8 +96,11 @@ function table(){
 
 
 function editbtn(event){
-    console.log(event.target.dataset.id);
-    db.products.get(1, data =>{
-        
+    let id = parseInt(event.target.dataset.id);
+    db.products.get(id, data =>{
+        userid.value = data.id || 0;
+        proname.value = data.name || "";
+        seller.value = data.seller || "";
+        price.value = data.price || "";
     })
 }
