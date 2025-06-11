@@ -1,5 +1,7 @@
 import productdb, {
-    bulkcreate
+    bulkcreate,
+    getData,
+    createEle
 }from './Module.js';
 
 //return the database instance
@@ -25,10 +27,28 @@ btncreate.onclick = (event) => {
         name:proname.value,
         seller:seller.value,
         price:price.value
-    })
-    console.log(flag);
+    });
+   // console.log(flag);
 
-    proname.value = "";
+    /*proname.value = "";
     seller.value = "";
     price.value = "";
+    */
+   proname.value = seller.value = price.value = "";
+
+   getData(db.products, (data)=>{
+        userid.value = data.id + 1 || 1;
+   });
 }
+
+// create event on btn read button
+btnread.onclick = table;
+
+function table(){
+    const tbody = document.getElementById("tbody");
+    createEle("td",tbody,(td)=>{
+        console.log(td);
+    })
+}
+
+
