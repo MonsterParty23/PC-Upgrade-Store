@@ -86,6 +86,8 @@ function table(){
                 createEle("td",tr,td=>{
                     createEle("i",td,i =>{
                         i.className += "fas fa-trash-alt btndelete"
+                        i.setAttribute(`data-id`,data.id);
+                        i.onclick = deletebtn;
                     })
                 })
             })
@@ -94,7 +96,7 @@ function table(){
    
 }
 
-
+//edit button function
 function editbtn(event){
     let id = parseInt(event.target.dataset.id);
     db.products.get(id, data =>{
@@ -103,4 +105,11 @@ function editbtn(event){
         seller.value = data.seller || "";
         price.value = data.price || "";
     })
+}
+
+//delete function button
+function deletebtn(event){
+    let id = parseInt(event.target.dataset.id);
+    db.products.delete(id);
+    table();
 }
