@@ -46,9 +46,21 @@ btnread.onclick = table;
 
 function table(){
     const tbody = document.getElementById("tbody");
-    createEle("td",tbody,(td)=>{
-        console.log(td);
+    getData(db.products, (data)=>{
+        if(data){
+            createEle("tr",tbody,tr =>{
+
+                for(const value in data){
+                    
+                    createEle("td",tr,td=>{
+                        td.textContent = data.price === data[value]?`$ ${data[value]}`:data[value];
+                    })
+                }
+                
+            })
+        }
     })
+   
 }
 
 

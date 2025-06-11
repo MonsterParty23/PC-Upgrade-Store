@@ -80,7 +80,7 @@ const createEle = (tagname, appendTo, fn) =>{
 export default productdb;
 export {
     bulkcreate,
-    getData
+    getData,
+    createEle
 };
 
-/*1:00:52 */
